@@ -14,14 +14,24 @@
     <div id="app"></div>
 
     <script type='text/babel'>
-      const cardData = importedFlashCardDataFile;
+const cardData = importedFlashCardDataFile;
+
 class App extends React.Component {
-  constructor () {
+  constructor() {
     super();
     this.state = {
       cardData: []
     };
   }
+
+  componentDidMount() {
+    this.setState({ cardData: cardData });
+  }
+
+  shuffleBackward = () => {
+
+  }
+
   render() {
     return (
       <div className='App'>
@@ -31,18 +41,27 @@ class App extends React.Component {
         <p className='sub-title'>
           An interactive flashcard app.
         </p>
-        <div className="card-list">
-          {cardData.map((card, index) => <Card key = {index} front={card.front} />)}
+        <div className='card-list'>
+          {this.state.cardData.map((card, index) => <Card key={index} front={card.front} />)}
+        </div>
+        <div className='buttons'>
+          <button onClick={() => this.shuffleBackward()}>
+            &lt;
+          </button>
+          <button>
+            &gt;
+          </button>
         </div>
       </div>
     );
   }
 }
+
 class Card extends React.Component {
   render() {
     return (
       <div className='Card -front'>
-        <div className="front">
+        <div className='front'>
           <h3 className='question'>
             {this.props.front.question}
           </h3>
@@ -54,6 +73,7 @@ class Card extends React.Component {
     );
   }
 }
+
 ReactDOM.render(<App />, document.getElementById('app'));
     </script>
   </body>
