@@ -29,7 +29,11 @@ class App extends React.Component {
   }
 
   shuffleBackward = () => {
+    console.log('Shuffle Backward!');
+  }
 
+  shuffleForward = () => {
+    console.log('Shuffle Forward!');
   }
 
   render() {
@@ -48,7 +52,7 @@ class App extends React.Component {
           <button onClick={() => this.shuffleBackward()}>
             &lt;
           </button>
-          <button>
+          <button onClick={() => this.shuffleForward()}>
             &gt;
           </button>
         </div>
